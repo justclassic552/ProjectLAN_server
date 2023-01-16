@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 import uvicorn
+import time
 
 app = FastAPI()
 
@@ -23,4 +24,9 @@ async def handle_switch():
 
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="127.0.0.1", port=8000)
+    while True:
+        try:
+            uvicorn.run(app, host="127.0.0.1", port=8000)
+        except Exception as e:
+            time.sleep(3)
+
